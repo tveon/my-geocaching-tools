@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="da-DK" ng-app="geotoolsApp">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Geocaching tools</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="js/controllers.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4" style="border: 1px dashed black">
+            <h4>Nummer i alfabetet</h4>
+            <table>
+                <tbody>
+                <tr>
+                    <td><label>Tekst: <input ng-model="alphabetText"></label></td>
+                </tr>
+                <tr>
+                    <td><label>Med W: <input type="checkbox" ng-model="withW"></label></td>
+                </tr>
+                <tr>
+                    <td><label>Resultat: <input value="{{ alphabetText|charNumber:withW }}" readonly></label></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" style="border: 1px dashed black">
+            <h4>Reduceret tværsum</h4>
+            <table>
+                <tbody>
+                <tr>
+                    <td><label>Tal: <input ng-model="numbersArray"></label></td>
+                </tr>
+                <tr>
+                    <td><label>Resultat: <input value="{{ numbersArray|sumOfDigits }}" readonly></label></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
