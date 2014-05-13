@@ -39,13 +39,15 @@ geotoolsApp.filter('charNumber', function () {
 geotoolsApp.filter('sumOfDigits', function () {
     return function (input) {
 
-        function sum(s) {
+        function clean(text) {
+            return text.match(/\d+/g).join('');
+        }
+
+        function sum(numbers) {
             var result = 0;
-            for (var i = 0; i < s.length; i++) {
-                var number = s.charAt(i);
-                if (!isNaN(number)) { //TODO - handle " "
-                    result = result + parseInt(number);
-                }
+            for (var i = 0; i < numbers.length; i++) {
+                var number = numbers.charAt(i);
+                result = result + parseInt(number);
             }
             return result;
         }
@@ -56,11 +58,12 @@ geotoolsApp.filter('sumOfDigits', function () {
                 sum = sum + n % 10;
                 n = Math.floor(n/10);
             }
+            sum = sum == 10 ? 1 : sum;
             return sum;
         }
 
         if (input != null) {
-            return reduce(sum(input));
+            return reduce(sum(clean(input)));
         }
         return null;
     }
